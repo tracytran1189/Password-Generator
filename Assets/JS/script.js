@@ -1,4 +1,4 @@
-// Assignment code here
+// Prompt for the password criteria
 function generatePassword() {
     var passwordLength = window.prompt("What is the password length?");
     while (!validatePasswordLength(passwordLength) && passwordLength !== null) {
@@ -9,6 +9,7 @@ function generatePassword() {
     var passwordNumeric = window.confirm("Would you like numbers in your password?");
     var passwordSpecialChars = window.confirm("Would you like special characters?");
 
+    //Validate the input
     var password = "";
 
     var typesToAdd = [];
@@ -34,14 +35,11 @@ function generatePassword() {
         return;
     }
 
-    console.log('typesToAdd', typesToAdd);
-
     var typesToAddIndex = 0;
 
     for (var i = 0; i < passwordLength; i++) {
 
         var typeToAdd = typesToAdd[typesToAddIndex];
-        console.log('typeToAdd', typeToAdd);
 
         switch (typeToAdd) {
             case 'lowerCase':
@@ -69,7 +67,7 @@ function generatePassword() {
     return password;
 }
 
-// ascii table 97 to 122
+//lowercase characters: ascii table 97 to 122
 function getRandomLowerCaseChar() {
     var randomInt = Math.floor(Math.random() * 122);
     while (randomInt < 97) {
@@ -82,7 +80,7 @@ function getRandomInt() {
     return Math.floor(Math.random() * 10);
 }
 
-// ascii table 65 to 90
+// Uppercase characters: ascii table 65 to 90
 function getRandomUpperCaseChar() {
     var randomInt = Math.floor(Math.random() * 90);
     while (randomInt < 65) {
@@ -91,7 +89,7 @@ function getRandomUpperCaseChar() {
     return String.fromCharCode(randomInt);
 }
 
-// ascii table 33 to 47
+//Special characters: ascii table 33 to 47
 function getRandomSpecialChar() {
     var randomInt = Math.floor(Math.random() * 47);
     while (randomInt < 33) {
@@ -100,6 +98,7 @@ function getRandomSpecialChar() {
     return String.fromCharCode(randomInt);
 }
 
+//password length from 8 to 128 
 function validatePasswordLength(passwordLength) {
     var isValid = !isNaN(passwordLength)
     if (!isValid) {
